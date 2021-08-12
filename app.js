@@ -10,4 +10,4 @@ http.createServer(function (req, res) {
   res.end();
 }).listen(8017);
 
-console.log('Ouvindo a porta 80')
+console.log('Primeio teste na AWS')
