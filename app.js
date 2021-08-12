@@ -8,6 +8,6 @@ http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
   res.write('Primeiro App');
   res.end();
-}).listen(80);
+}).listen(8017);
 
 console.log('Ouvindo a porta 80')
