@@ -6,8 +6,8 @@ var http = require("http")
 var http = require('http');
 http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.write('Primeiro Teste na AWS');
+  res.write('Primeiro Teste na AWS - Mais um Teste');
   res.end();
 }).listen(8017);
 
-console.log('Primeio teste na AWS')
+console.log('Primeio teste na AWS - ')
