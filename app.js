@@ -1,13 +1,52 @@
-//Chame o módulo  HTTP
-var http = require("http")
+const express = require('express');
+const morgan = require('morgan');
+const app = express();
+//const bodyParser = require('body-parser');
 
-//Crie um servidor HTTP para ouvir as requisições na porta 8000
+const routeUser = require('./routes/users_ORACLE');
 
-var http = require('http');
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.write('Primeiro Teste na AWS - 16082021 - Jekins Wesley ');
-  res.end();
-}).listen(8017);
 
-console.log('Primeio teste na AWS - ')
+//Para acompanhar no Terminal as Requisições realizadas
+app.use(morgan('dev'));
+
+//Os 2 métodos abaixo é caso eu queira passar parametros atraves do JSON
+//app.use(bodyParser.urlencoded({ extended: false }));
+//app.use(bodyParser,json());
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*'); //Caso queira que seja acessível somente pelo servidor alterar o '*' pelo servidor '192.168.1.3...'
+  res.header(
+    'Access-Control-Allow-Header',
+    'Origin, X-Requerested-With, Content-Type, Accept, Authorization'
+  );
+
+  if(req.method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET'); //Somente aceitará os VERBOS declarados
+    return res.status(200).send({});
+  }
+
+  next();
+})
+
+
+//Rotas definidas para ser chamadas
+app.use('/user', routeUser);
+
+//Rota que será chamada, caso seja chamada uma rota inexistente
+app.use((req, res, next) => {
+  const erro = new Error('Não encontrado');
+  erro.status = 404;
+  next(erro);
+})
+
+//Caso de algum erro dentro da execução de uma das rotas definidas acima
+app.use((err, req, res, next) => {
+  res.status(err.status || 500);
+    return res.send({
+      erro: {
+        mensagem: err.message
+      }
+    })
+})
+
+module.exports = app;

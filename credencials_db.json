@@ -1,0 +1,16 @@
+{
+  "env" : {
+    "ORACLE_USER"         : "sigates",
+    "ORACLE_PASSWORD"     : "sigates",
+    "ORACLE_CONNSTRING"   : "192.168.1.3:1521/siga",
+    "ORACLE_PORT"         : 7070,
+
+    "SQL_USER"            : "grupocicopal.corp/DBASuporte",
+    "SQL_PASSWORD"        : "db@C1cop41",
+    "SQL_DATABASE"        : "cicopalDW",
+    "SQL_HOST"            : "192.168.1.19",
+    "SQL_PORT"            : 1433,
+
+    "MSSQL_CONNSTR"       : "Server=192.168.19;Port=1433;Database=CicopalDW;User Id=DBASuporte;Password=db@C1cop41"
+  }
+}
