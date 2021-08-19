@@ -34,7 +34,7 @@ app.use('/user', routeUser);
 
 //Rota que será chamada, caso seja chamada uma rota inexistente
 app.use((req, res, next) => {
-  const erro = new Error('Não encontrado! Informar a rota.');
+  const erro = new Error('Rota não encontrado! Informar a rota.');
   erro.status = 404;
   next(erro);
 })
