@@ -6,7 +6,7 @@ var http = require("http")
 var http = require('http');
 http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.write('Primeiro Teste na AWS - 16082021 - Jekins Jeeybson ');
+  res.write('Primeiro Teste na AWS - 16082021 - Jekins Wesley ');
   res.end();
 }).listen(8017);
 
